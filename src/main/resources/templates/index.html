@@ -11,7 +11,7 @@
 
 <title>Tocdify</title>
 
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <link href="css/custom.css" rel="stylesheet" />
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -48,12 +48,14 @@
 		<div class="center-block">
 			<div class="center-block">
 				<form method="POST" enctype="multipart/form-data" action="/">
-					<table >
+					<table>
 						<tr>
-							<td><label id="select-file-label form-control" class="btn btn-default"
-								for="select-file" th:text="#{index.label.upload}">Upload</label></td>
+							<td><label id="select-file-label form-control"
+								class="btn btn-default" for="select-file"
+								th:text="#{index.label.upload}">Upload</label></td>
 							<td><input id="select-file" type="file" name="file" /></td>
-							<td><input class="btn btn-primary" type="submit" value="Upload" /></td>
+							<td><input class="btn btn-primary" type="submit"
+								value="Upload" /></td>
 						</tr>
 					</table>
 				</form>
@@ -66,7 +68,7 @@
 	<!-- /.container -->
 
 	<script src="js/jquery-2.2.4.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="css/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
 
