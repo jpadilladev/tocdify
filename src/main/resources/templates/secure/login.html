@@ -23,20 +23,20 @@
 	 <div class="container">
 
       <form class="form-signin" th:action="@{/login}" method="post">
-        <h2 class="form-signin-heading">Tocdify</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="text" id="inputEmail" class="form-control" name="username" placeholder="Username" required="required" autofocus="autofocus"/>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required="required"/>
+        <h2 class="form-signin-heading" th:text="#{login.label.title}">User Login</h2>
+        <label for="inputUsername" class="sr-only" th:text="#{login.label.username}">Username</label>
+        <input type="text" id="inputUsername" class="form-control" name="username" th:placeholder="#{login.label.username}" required="required" autofocus="autofocus"/>
+        <label for="inputPassword" class="sr-only" th:text="#{login.label.password}">Password</label>
+        <input type="password" id="inputPassword" class="form-control" name="password" th:placeholder="#{login.label.password}" required="required"/>
 <!--         <div class="checkbox"> -->
 <!--           <label> -->
 <!--             <input type="checkbox" value="remember-me"> Remember me -->
 <!--           </label> -->
 <!--         </div> -->
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{login.label.signin}">Sign in</button>
       </form>
-    <div class="alert alert-danger" role="alert" th:if="${param.error}">Invalid username or password</div>
-	<div class="alert alert-info" role="alert" th:if="${param.logout}">You have been logged out.</div>
+    <div class="alert alert-danger" role="alert" th:if="${param.error}" th:text="#{login.msg.invalidLogin}">Invalid username or password</div>
+	<div class="alert alert-info" role="alert" th:if="${param.logout}" th:text="#{login.msg.logout}">You have been logged out.</div>
     </div> <!-- /container -->
 	
 	<script src="js/jquery-2.2.4.min.js"></script>

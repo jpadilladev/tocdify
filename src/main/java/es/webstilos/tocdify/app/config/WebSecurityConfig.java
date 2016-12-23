@@ -10,22 +10,28 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import es.webstilos.tocdify.model.settings.Settings;
+
 @Configuration
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
+	private Settings settings;
+	@Autowired
 	private UserDetailsService userDetailsService;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.formLogin()//
-				.loginPage("/login")//
-				.failureUrl("/login?error")//
-				.and()//
-				.authorizeRequests()//
-				.antMatchers("/login").permitAll()//
-				.antMatchers("/", "/**").authenticated();
+		if (settings.getUserSettings().getUser() != null) {
+			http.formLogin()//
+					.loginPage("/login")//
+					.failureUrl("/login?error")//
+					.and()//
+					.authorizeRequests()//
+					.antMatchers("/login").permitAll()//
+					.antMatchers("/", "/**").authenticated();
+		}
 	}
 
 	@Override
