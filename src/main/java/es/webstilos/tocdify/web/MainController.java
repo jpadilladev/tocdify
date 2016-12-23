@@ -16,9 +16,5 @@ public class MainController {
 		return "secure/login";
 	}
 	
-	@RequestMapping("/settings")
-	public String settings(){
-		return "settings/settings";
-	}
 
 }

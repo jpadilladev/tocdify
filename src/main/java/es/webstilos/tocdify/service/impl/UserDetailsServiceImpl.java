@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import es.webstilos.tocdify.service.UserService;
+import es.webstilos.tocdify.service.SettingsService;
 
 /**
  * TODO Extract all this user Spring configuration to external libs
@@ -15,11 +15,11 @@ import es.webstilos.tocdify.service.UserService;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
-	private UserService userService;
+	private SettingsService settingsService;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		return userService.getUserByUsername(username);
+		return settingsService.getUserByUsername(username);
 	}
 
 }

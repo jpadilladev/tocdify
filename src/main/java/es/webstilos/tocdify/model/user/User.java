@@ -2,12 +2,14 @@ package es.webstilos.tocdify.model.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
-	public String username;
-	public String passwordHash;
+	private String username;
+	private String passwordHash;
 
 }
