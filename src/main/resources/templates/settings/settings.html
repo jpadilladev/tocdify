@@ -10,7 +10,6 @@
 <link rel="icon" href="images/favicon.ico" />
 <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <link href="css/settings.css" rel="stylesheet" />
-
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -34,28 +33,52 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class="active"><a href="#" th:text="#{settings.general}">General <span class="sr-only">(current)</span></a></li>
-					<li><a href="#" th:text="#{settings.templates}">Templates</a></li>
+					<li id="linkGeneral"><a href="#" th:text="#{settings.general}">General <span class="sr-only">(current)</span></a></li>
+					<li id="linkTemplates"><a href="#" th:text="#{settings.templates}">Templates</a></li>
 				</ul>
 			</div>
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<div id="sectionGeneral" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header" th:text="#{settings.general}">General</h1>
 
 				<form action="#" th:action="@{/changeUser}" th:object="${settings}" method="post">
 					<div class="form-group">
-						<label for="username" th:text="#{settings.general.label.username}">Username</label> <input type="text" th:field="*{username}" class="form-control" id="username" th:placeholder="#{settings.general.label.username}"/>
+						<label for="username" th:text="#{settings.general.label.username}">Username</label> <input type="text" th:field="*{username}" class="form-control" id="username"
+							th:placeholder="#{settings.general.label.username}" />
 					</div>
 					<div class="form-group">
-						<label for="password" th:text="#{settings.general.label.password}">Password</label> <input type="password" th:field="*{password}"  class="form-control" id="password" th:placeholder="#{settings.general.label.password}"/>
+						<label for="password" th:text="#{settings.general.label.password}">Password</label> <input type="password" th:field="*{password}" class="form-control" id="password"
+							th:placeholder="#{settings.general.label.password}" />
 					</div>
 					<input class="btn-info" type="submit" th:value="#{settings.general.label.changeUser}" />
 				</form>
+			</div>
+			<div id="sectionTemplates" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<h1 class="page-header" th:text="#{settings.templates}">Templates</h1>
 
+				<form action="#" th:action="@{/changeUser}" th:object="${settings}" method="post">
+					<div class="form-group">
+						<label for="username" th:text="#{settings.general.label.username}">Username</label> <input type="text" th:field="*{username}" class="form-control" id="username"
+							th:placeholder="#{settings.general.label.username}" />
+					</div>
+					<div class="form-group">
+						<label for="password" th:text="#{settings.general.label.password}">Password</label> <input type="password" th:field="*{password}" class="form-control" id="password"
+							th:placeholder="#{settings.general.label.password}" />
+					</div>
+					<input class="btn-info" type="submit" th:value="#{settings.general.label.changeUser}" />
+				</form>
 			</div>
 		</div>
 	</div>
-
+	<script src="js/tocdify.js"></script>
 	<script src="js/jquery-2.2.4.min.js"></script>
 	<script src="css/bootstrap/js/bootstrap.min.js"></script>
+	<script>
+		$(function() {
+			tocdify.tabListeners({
+				"linkGeneral" : "sectionGeneral",
+				"linkTemplates": "sectionTemplates"
+			}, "linkGeneral");
+		});
+	</script>
 </body>
 </html>
