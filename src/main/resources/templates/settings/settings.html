@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<title>Tocdify Login</title>
+<title th:text="#{settings.title}">Tocdify Settings</title>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -54,15 +54,14 @@
 			</div>
 			<div id="sectionTemplates" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header" th:text="#{settings.templates}">Templates</h1>
+				<select>
+					<option th:each="template : ${settings.templates}" th:text="template.name">Template Name</option>
+				</select>
+				<form action="#" th:action="@{/saveTemplates}" th:object="${settings}" method="post">
 
-				<form action="#" th:action="@{/changeUser}" th:object="${settings}" method="post">
 					<div class="form-group">
-						<label for="username" th:text="#{settings.general.label.username}">Username</label> <input type="text" th:field="*{username}" class="form-control" id="username"
+						<label for="templateName" th:text="#{settings.templates.label.name}">Template Name</label> <input type="text" th:field="*{templates}" class="form-control" id="username"
 							th:placeholder="#{settings.general.label.username}" />
-					</div>
-					<div class="form-group">
-						<label for="password" th:text="#{settings.general.label.password}">Password</label> <input type="password" th:field="*{password}" class="form-control" id="password"
-							th:placeholder="#{settings.general.label.password}" />
 					</div>
 					<input class="btn-info" type="submit" th:value="#{settings.general.label.changeUser}" />
 				</form>
@@ -76,7 +75,7 @@
 		$(function() {
 			tocdify.tabListeners({
 				"linkGeneral" : "sectionGeneral",
-				"linkTemplates": "sectionTemplates"
+				"linkTemplates" : "sectionTemplates"
 			}, "linkGeneral");
 		});
 	</script>

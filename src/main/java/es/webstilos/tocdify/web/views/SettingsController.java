@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import es.webstilos.tocdify.service.SettingsService;
 import es.webstilos.tocdify.web.model.SettingsDto;
+import es.webstilos.tocdify.web.model.TemplateDto;
 
 @Controller
 public class SettingsController {
@@ -19,6 +20,7 @@ public class SettingsController {
 	@GetMapping("/settings")
 	public String settingForm(Model model) {
 		model.addAttribute("settings", new SettingsDto(settingsService.getSettings()));
+		model.addAttribute("newTemplate", new TemplateDto());
 		return "settings/settings";
 	}
 
